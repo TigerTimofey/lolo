@@ -15,7 +15,7 @@ const AddArticleModal = ({ closeModal, handleAddArticle, handleEditArticle, arti
             setDescription(articleToEdit.description || '');
             setAuthor(articleToEdit.author || '');
             setCategories(articleToEdit.categories ? articleToEdit.categories.join(', ') : '');
-            setImageUrl(articleToEdit.enclosure?.link || '' || articleToEdit.imageUrl );
+            setImageUrl(articleToEdit.enclosure?.link || ''  || articleToEdit.imageUrl );
         } else {
             setTitle('');
             setDescription('');
