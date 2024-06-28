@@ -20,6 +20,7 @@ The key features of the application include:
 7. Every article can be opened by clicking on the articles title, description, or image.
 8. All CSS is written by the developer. The project does not use any third-party libraries.
 9. Added possibility to add/edit/remove custom RSS feeds, which should remain even after refreshing the page by using MongoDB, express and mongoose.
+10. Before displaying the article, it freeds from clutter using the Mercury API web parser.
    
 ## `Versions and used packages`
 
