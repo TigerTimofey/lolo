@@ -14,7 +14,7 @@ app.use(express.json());
 
 const fetch = (...args) => import('node-fetch').then(({ default: fetch }) => fetch(...args));
 app.post('/webparser', async (req, res) => {
-  const { url } = req.query;  
+  const { url } = req.body;  
   try {
     const response = await fetch('https://uptime-mercury-api.azurewebsites.net/webparser', {
       method: 'POST',
