@@ -28,7 +28,7 @@ const AddArticleModal = ({ closeModal, handleAddArticle, handleEditArticle, arti
 
     const submitArticle = async (article) => {
         try {
-            const url = articleToEdit ? `http://localhost:4000/articles/${articleToEdit._id}` : 'http://localhost:4000/articles';
+            const url = articleToEdit ? `${process.env.REACT_APP_BACKEND_URL}/articles/${articleToEdit._id}` : 'http://localhost:4000/articles';
             const method = articleToEdit ? 'PUT' : 'POST';
 
             const response = await fetch(url, {
