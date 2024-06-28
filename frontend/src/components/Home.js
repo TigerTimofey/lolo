@@ -19,7 +19,7 @@ const Home = () => {
             if (!response.ok) {
                 throw new Error('Failed to fetch articles');
             }
-            const data = await response.json();console.log(data)
+            const data = await response.json();
             setExistingArticles(data);
         } catch (error) {
             console.error('Error fetching articles:', error);
