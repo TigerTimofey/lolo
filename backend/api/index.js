@@ -12,6 +12,27 @@ const PORT = process.env.PORT
 app.use(cors());
 app.use(express.json());
 
+const fetch = (...args) => import('node-fetch').then(({ default: fetch }) => fetch(...args));
+app.post('/webparser', async (req, res) => {
+  const { url } = req.query;  
+  try {
+    const response = await fetch('https://uptime-mercury-api.azurewebsites.net/webparser', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': '*/*' 
+      },
+      body: JSON.stringify({ url })
+    });
+        const data = await response.json();
+    res.status(response.status).json(data);
+  } catch (error) {
+    console.error('Error fetching from Mercury API:', error);
+    res.status(500).json({ error: 'Error fetching from Mercury API' });
+  }
+});
+
+
 const dbURI = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@${process.env.DB_CLUSTER}.mongodb.net/${process.env.DB_NAME}?retryWrites=true&w=majority`;
 mongoose.connect(dbURI)
   .then(() => app.listen(PORT, () => console.log(`Server started on port ${PORT}`)))

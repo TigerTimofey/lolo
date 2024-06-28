@@ -7,13 +7,14 @@ const ArticleModal = ({ article, closeModal }) => {
     const [loading, setLoading] = React.useState(false);
     const [error, setError] = React.useState(null);
 
+
+    //this fetch uses Proxy from json
   React.useEffect(() => {
         const fetchExcerpt = async (url) => {
             setLoading(true);
             setError(null);
             try {
-
-                const response = await axios.post('/webparser', { url });
+                const response = await axios.post(`${REACT_APP_BACKEND_URL}/webparser`, { url });
                 const data = response.data;
                 if (data && data.excerpt) {
                     setExcerpt(data);
